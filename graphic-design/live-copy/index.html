@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-theme="dark">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <title>Laarvee | SINNGOUKI - kbrd&#39;s 应聘作品集</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="应聘作品集">
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/style.css">
+
+    
+    
+    
+    
+</head>
+<body>
+    
+    <header class="top-header">
+        <nav class="top-nav">
+            <div class="nav-container">
+                <div class="nav-center">
+                    
+                    <a href="/" class="nav-link">About</a>
+                    
+                    <a href="/graphic-design/" class="nav-link">Graphic Design</a>
+                    
+                    <a href="/music/" class="nav-link">Music</a>
+                    
+                    <a href="/projects/" class="nav-link">Projects</a>
+                    
+                </div>
+                <div class="nav-right">
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="切换主题">
+                        <span class="theme-text dark-text">LIGHT</span>
+                        <span class="theme-text light-text">DARK</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        
+        <div class="page-container">
+            
+<article class="project-detail">
+    <header class="project-header">
+        <h1 class="project-title">Laarvee | SINNGOUKI</h1>
+        
+        
+        <p class="project-date">2024</p>
+        
+        
+        <p class="project-location">Hangzhou</p>
+        
+        
+        <p class="project-link">
+            <a href="https://www.laarvee.com/" target="_blank" class="external-link">Link↗</a>
+        </p>
+        
+    </header>
+
+    <div class="project-content">
+        
+        <div class="project-gallery">
+            <div class="image-grid">
+                
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/singouki/1.jpg" data-alt="Laarvee | SINNGOUKI">
+                    <img src="http://localhost:1313/images/singouki/1.jpg" alt="Laarvee | SINNGOUKI" loading="lazy" class="thumbnail">
+                </div>
+                
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/singouki/2.jpg" data-alt="Laarvee | SINNGOUKI">
+                    <img src="http://localhost:1313/images/singouki/2.jpg" alt="Laarvee | SINNGOUKI" loading="lazy" class="thumbnail">
+                </div>
+                
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/singouki/3.jpg" data-alt="Laarvee | SINNGOUKI">
+                    <img src="http://localhost:1313/images/singouki/3.jpg" alt="Laarvee | SINNGOUKI" loading="lazy" class="thumbnail">
+                </div>
+                
+            </div>
+        </div>
+        
+
+        
+        <div class="project-description">
+            <p>与 Laarvee 合作，制作了一系列插画，发表在品牌杂志中。</p>
+
+        </div>
+        
+    </div>
+</article>
+
+<div id="lightbox" class="lightbox" style="display:none;">
+    <div class="lightbox-content">
+        <span class="lightbox-close">×</span>
+        <img id="lightbox-image" src="" alt="">
+        <div class="lightbox-nav">
+            <button id="lightbox-prev" class="lightbox-nav-btn">‹</button>
+            <button id="lightbox-next" class="lightbox-nav-btn">›</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxClose = document.querySelector(".lightbox-close");
+    const lightboxPrev = document.getElementById("lightbox-prev");
+    const lightboxNext = document.getElementById("lightbox-next");
+    
+    let images = [];
+    let currentIndex = 0;
+    
+    function openLightbox(imageArray, index) {
+        images = imageArray;
+        currentIndex = index;
+        lightboxImage.src = images[currentIndex].src;
+        lightboxImage.alt = images[currentIndex].alt;
+        lightbox.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+    
+    function closeLightbox() {
+        lightbox.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+    
+    function showPrev() {
+        if (images.length <= 1) return;
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImage.src = images[currentIndex].src;
+        lightboxImage.alt = images[currentIndex].alt;
+    }
+    
+    function showNext() {
+        if (images.length <= 1) return;
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImage.src = images[currentIndex].src;
+        lightboxImage.alt = images[currentIndex].alt;
+    }
+    
+    const imageItems = document.querySelectorAll(".image-item img");
+    if (imageItems.length > 0) {
+        const imageArray = Array.from(imageItems).map(img => ({
+            src: img.src,
+            alt: img.alt
+        }));
+        
+        imageItems.forEach((img, index) => {
+            img.style.cursor = "pointer";
+            img.addEventListener("click", function() {
+                openLightbox(imageArray, index);
+            });
+        });
+    }
+    
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxPrev.addEventListener("click", showPrev);
+    lightboxNext.addEventListener("click", showNext);
+    
+    lightbox.addEventListener("click", function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    document.addEventListener("keydown", function(e) {
+        if (lightbox.style.display === "flex") {
+            if (e.key === "Escape") {
+                closeLightbox();
+            } else if (e.key === "ArrowLeft") {
+                showPrev();
+            } else if (e.key === "ArrowRight") {
+                showNext();
+            }
+        }
+    });
+});
+</script>
+
+        </div>
+    </main>
+    
+    
+    <footer class="site-footer">
+        <a href="#top">[ BACK TO TOP ]</a>
+    </footer>
+    
+    
+    
+
+    
+    <script>
+        
+        function getCurrentTheme() {
+            return document.documentElement.getAttribute('data-theme') || 'dark';
+        }
+
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            try {
+                localStorage.setItem('theme', theme);
+            } catch (e) {
+                console.log('无法保存主题设置');
+            }
+            updateThemeButton();
+        }
+
+        
+        function toggleTheme() {
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        
+        function updateThemeButton() {
+            const currentTheme = getCurrentTheme();
+            const darkText = document.querySelector('.dark-text');
+            const lightText = document.querySelector('.light-text');
+            
+            if (darkText && lightText) {
+                if (currentTheme === 'dark') {
+                    darkText.style.opacity = '1';
+                    lightText.style.opacity = '0';
+                } else {
+                    darkText.style.opacity = '0';
+                    lightText.style.opacity = '1';
+                }
+            }
+        }
+
+        
+        function checkBackgroundImage() {
+            const bgContainer = document.getElementById('home-bg-container');
+            if (!bgContainer) return;
+            
+            const img = new Image();
+            img.onload = function() {
+                console.log('背景图加载成功');
+                bgContainer.classList.remove('fallback-bg');
+            };
+            img.onerror = function() {
+                console.log('背景图加载失败，使用备用背景');
+                bgContainer.classList.add('fallback-bg');
+            };
+            const baseURL = 'http:\/\/localhost:1313\/';
+            img.src = baseURL.replace(/\/$/, '') + '/images/bg.png';
+        }
+
+        
+        function initTheme() {
+            let savedTheme;
+            try {
+                savedTheme = localStorage.getItem('theme');
+            } catch (e) {
+                console.log('无法读取主题设置');
+                savedTheme = null;
+            }
+            
+            const theme = savedTheme || 'dark';
+            setTheme(theme);
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+            initTheme();
+            
+            
+            if (document.getElementById('home-bg-container')) {
+                checkBackgroundImage();
+            }
+        });
+
+        
+        initTheme();
+        
+        
+        (function() {
+            const baseURL = 'http:\/\/localhost:1313';
+            if (baseURL && baseURL !== 'http://localhost:1313' && baseURL !== 'http://localhost:1313/') {
+                document.querySelectorAll('img[src^="/images/"]').forEach(function(img) {
+                    const originalSrc = img.getAttribute('src');
+                    if (originalSrc && originalSrc.startsWith('/images/')) {
+                        img.src = baseURL + originalSrc;
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
