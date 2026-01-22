@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Brand，Album Cover on kbrd&#39;s 应聘作品集</title>
+    <link>http://localhost:1313/tags/brandalbum-cover/</link>
+    <description>Recent content in Brand，Album Cover on kbrd&#39;s 应聘作品集</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <atom:link href="http://localhost:1313/tags/brandalbum-cover/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Album Cover</title>
+      <link>http://localhost:1313/graphic-design/albumcover/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/graphic-design/albumcover/</guid>
+      <description>&lt;p&gt;为寿县做文旅产品设计，《寿州志》包含手册、食用产品包装、年轻化餐饮品牌设计。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
