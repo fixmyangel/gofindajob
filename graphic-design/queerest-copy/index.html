@@ -8,7 +8,7 @@
     
     
     
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="http://localhost:1313/css/style.css">
 
     
     
@@ -69,20 +69,28 @@
         <div class="project-gallery">
             <div class="image-grid">
                 
-                <div class="image-item" data-src="/images/queerest/1.png" data-alt="QUEEREST">
-                    <img src="/images/queerest/1.png" alt="QUEEREST" loading="lazy" class="thumbnail">
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/queerest/1.jpg" data-alt="QUEEREST">
+                    <img src="http://localhost:1313/images/queerest/1.jpg" alt="QUEEREST" loading="lazy" class="thumbnail">
                 </div>
                 
-                <div class="image-item" data-src="/images/queerest/5.png" data-alt="QUEEREST">
-                    <img src="/images/queerest/5.png" alt="QUEEREST" loading="lazy" class="thumbnail">
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/queerest/5.jpg" data-alt="QUEEREST">
+                    <img src="http://localhost:1313/images/queerest/5.jpg" alt="QUEEREST" loading="lazy" class="thumbnail">
                 </div>
                 
-                <div class="image-item" data-src="/images/queerest/6.png" data-alt="QUEEREST">
-                    <img src="/images/queerest/6.png" alt="QUEEREST" loading="lazy" class="thumbnail">
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/queerest/6.jpg" data-alt="QUEEREST">
+                    <img src="http://localhost:1313/images/queerest/6.jpg" alt="QUEEREST" loading="lazy" class="thumbnail">
                 </div>
                 
-                <div class="image-item" data-src="/images/queerest/7.png" data-alt="QUEEREST">
-                    <img src="/images/queerest/7.png" alt="QUEEREST" loading="lazy" class="thumbnail">
+                
+                
+                <div class="image-item" data-src="http://localhost:1313/images/queerest/7.jpg" data-alt="QUEEREST">
+                    <img src="http://localhost:1313/images/queerest/7.jpg" alt="QUEEREST" loading="lazy" class="thumbnail">
                 </div>
                 
             </div>
@@ -254,7 +262,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log('背景图加载失败，使用备用背景');
                 bgContainer.classList.add('fallback-bg');
             };
-            img.src = '/images/bg.png';
+            const baseURL = 'http:\/\/localhost:1313\/';
+            img.src = baseURL.replace(/\/$/, '') + '/images/bg.png';
         }
 
         
@@ -287,6 +296,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
         
         initTheme();
+        
+        
+        (function() {
+            const baseURL = 'http:\/\/localhost:1313';
+            if (baseURL && baseURL !== 'http://localhost:1313' && baseURL !== 'http://localhost:1313/') {
+                document.querySelectorAll('img[src^="/images/"]').forEach(function(img) {
+                    const originalSrc = img.getAttribute('src');
+                    if (originalSrc && originalSrc.startsWith('/images/')) {
+                        img.src = baseURL + originalSrc;
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 </html>
